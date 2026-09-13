@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller La Tala — artesanías hechas a mano</title>
+<meta name="description" content="Piezas de telar, greda, madera y cuero hechas de a una en el Taller La Tala.">
+<link rel="stylesheet" href="estilosIA.css">
+
+<!--
+  ARCHIVOS QUE TENÉS QUE PONER DENTRO DE LA CARPETA "articulos"
+  (cada pieza usa el mismo nombre para la foto y para el PDF)
+
+  ruana-llama.jpg / .pdf        bowl-greda.jpg / .pdf         tabla-algarrobo.jpg / .pdf     cinto-repujado.jpg / .pdf
+  faja-santiaguena.jpg / .pdf   jarra-esmaltada.jpg / .pdf    mortero-palosanto.jpg / .pdf   rastra-criolla.jpg / .pdf
+  almohadon-telar.jpg / .pdf    mate-ceramica.jpg / .pdf      banquito-quebracho.jpg / .pdf  cartera-cuero.jpg / .pdf
+-->
+</head>
+<body>
+
+<header class="cabecera">
+  <a class="marca" href="#inicio">
+    <span class="marca__nombre">Taller La&nbsp;Tala</span>
+    <span class="marca__oficio">telar · greda · madera · cuero</span>
+  </a>
+  <nav class="menu" aria-label="Navegación principal">
+    <a href="#inicio">Inicio</a>
+    <a href="#articulos">Artículos</a>
+    <a href="#informacion">Información</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===== INICIO ===== -->
+  <section class="portada" id="inicio">
+    <p class="portada__linea">Desde 2016, en un galpón con tres telares y un horno a leña</p>
+    <h1 class="portada__titulo">Cada pieza sale<br>de una sola mano</h1>
+    <p class="portada__bajada">
+      Tejemos, torneamos y cosemos en cantidades chicas. Por eso ninguna
+      ruana repite el mismo tramado y ningún bowl sale igual al anterior.
+      Elegí una categoría y mirá lo que hay hoy en el taller.
+    </p>
+    <a class="portada__paso" href="#articulos">Ver las piezas</a>
+  </section>
+
+  <div class="urdimbre" aria-hidden="true"></div>
+
+  <!-- ===== ARTÍCULOS ===== -->
+  <section class="catalogo" id="articulos">
+
+    <h2 class="titulo-seccion">Artículos</h2>
+    <p class="intro">Doce piezas disponibles, agrupadas por oficio.</p>
+
+    <!-- Radios del filtro: van antes de todo para poder usar el selector ~ en el CSS -->
+    <input class="radio" type="radio" name="categoria" id="cat-todas" checked>
+    <input class="radio" type="radio" name="categoria" id="cat-tejidos">
+    <input class="radio" type="radio" name="categoria" id="cat-ceramica">
+    <input class="radio" type="radio" name="categoria" id="cat-madera">
+    <input class="radio" type="radio" name="categoria" id="cat-cuero">
+
+    <div class="filtros" role="group" aria-label="Filtrar por categoría">
+      <label for="cat-todas">Todas</label>
+      <label for="cat-tejidos">Tejidos</label>
+      <label for="cat-ceramica">Cerámica</label>
+      <label for="cat-madera">Madera</label>
+      <label for="cat-cuero">Cuero y plata</label>
+    </div>
+
+    <div class="grupos">
+
+      <!-- Tejidos -->
+      <section class="grupo grupo--tejidos">
+        <h3 class="grupo__titulo">Tejidos</h3>
+        <p class="grupo__nota">Lana hilada a rueca, teñida con cáscara de cebolla y nogal.</p>
+        <div class="grilla">
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/ruana-llama.jpg" alt="Ruana de lana de llama tejida en telar" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Ruana de lana de llama</h4>
+              <p class="pieza__desc">Tejida en telar criollo, con fleco anudado a mano. Abriga sin pesar.</p>
+              <a class="info" href="articulos/ruana-llama.pdf" target="_blank" rel="noopener" aria-label="Más información sobre la ruana de lana de llama (PDF)">+ Info</a>
+            </div>
+          </article>
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/faja-santiaguena.jpg" alt="Faja santiagueña de lana con guardas rojas" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Faja santiagueña</h4>
+              <p class="pieza__desc">Guardas en rojo cochinilla sobre lana cruda. Dos metros de urdimbre.</p>
+              <a class="info" href="articulos/faja-santiaguena.pdf" target="_blank" rel="noopener" aria-label="Más información sobre la faja santiagueña (PDF)">+ Info</a>
+            </div>
+          </article>
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/almohadon-telar.jpg" alt="Almohadón de telar con listones ocres" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Almohadón de telar</h4>
+              <p class="pieza__desc">Cuarenta por cuarenta, con cierre de madera y relleno desmontable.</p>
+              <a class="info" href="articulos/almohadon-telar.pdf" target="_blank" rel="noopener" aria-label="Más información sobre el almohadón de telar (PDF)">+ Info</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Cerámica -->
+      <section class="grupo grupo--ceramica">
+        <h3 class="grupo__titulo">Cerámica</h3>
+        <p class="grupo__nota">Greda de Los Hornos, horneada a leña. Apta para horno y lavavajillas.</p>
+        <div class="grilla">
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/bowl-greda.jpg" alt="Bowl de greda con esmalte color miel" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Bowl de greda</h4>
+              <p class="pieza__desc">Esmalte miel por dentro, barro desnudo por fuera. Entra medio litro.</p>
+              <a class="info" href="articulos/bowl-greda.pdf" target="_blank" rel="noopener" aria-label="Más información sobre el bowl de greda (PDF)">+ Info</a>
+            </div>
+          </article>
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/jarra-esmaltada.jpg" alt="Jarra de cerámica esmaltada con asa ancha" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Jarra esmaltada</h4>
+              <p class="pieza__desc">Asa ancha, pico corrido. Un litro y medio, para la mesa de todos los días.</p>
+              <a class="info" href="articulos/jarra-esmaltada.pdf" target="_blank" rel="noopener" aria-label="Más información sobre la jarra esmaltada (PDF)">+ Info</a>
+            </div>
+          </article>
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/mate-ceramica.jpg" alt="Mate de cerámica con base ancha" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Mate de cerámica</h4>
+              <p class="pieza__desc">Base ancha para que no se tumbe, boca angosta para que no se lave.</p>
+              <a class="info" href="articulos/mate-ceramica.pdf" target="_blank" rel="noopener" aria-label="Más información sobre el mate de cerámica (PDF)">+ Info</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Madera -->
+      <section class="grupo grupo--madera">
+        <h3 class="grupo__titulo">Madera</h3>
+        <p class="grupo__nota">Maderas de poda y recorte de aserradero, terminadas con aceite de lino.</p>
+        <div class="grilla">
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/tabla-algarrobo.jpg" alt="Tabla de algarrobo con veta oscura" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Tabla de algarrobo</h4>
+              <p class="pieza__desc">Una sola pieza de treinta y cinco centímetros, con canal para el jugo.</p>
+              <a class="info" href="articulos/tabla-algarrobo.pdf" target="_blank" rel="noopener" aria-label="Más información sobre la tabla de algarrobo (PDF)">+ Info</a>
+            </div>
+          </article>
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/mortero-palosanto.jpg" alt="Mortero de palo santo con su mano" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Mortero de palo santo</h4>
+              <p class="pieza__desc">Torneado con su mano. Guarda el perfume de la madera durante años.</p>
+              <a class="info" href="articulos/mortero-palosanto.pdf" target="_blank" rel="noopener" aria-label="Más información sobre el mortero de palo santo (PDF)">+ Info</a>
+            </div>
+          </article>
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/banquito-quebracho.jpg" alt="Banquito bajo de quebracho de tres patas" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Banquito de quebracho</h4>
+              <p class="pieza__desc">Tres patas ensambladas a cuña, sin un solo clavo. Cuarenta de alto.</p>
+              <a class="info" href="articulos/banquito-quebracho.pdf" target="_blank" rel="noopener" aria-label="Más información sobre el banquito de quebracho (PDF)">+ Info</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Cuero y plata -->
+      <section class="grupo grupo--cuero">
+        <h3 class="grupo__titulo">Cuero y plata</h3>
+        <p class="grupo__nota">Cuero curtido al vegetal y alpaca trabajada en frío.</p>
+        <div class="grilla">
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/cinto-repujado.jpg" alt="Cinto de cuero repujado con motivos de hojas" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Cinto repujado</h4>
+              <p class="pieza__desc">Repujado a buril con motivo de tala. Hebilla de alpaca maciza.</p>
+              <a class="info" href="articulos/cinto-repujado.pdf" target="_blank" rel="noopener" aria-label="Más información sobre el cinto repujado (PDF)">+ Info</a>
+            </div>
+          </article>
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/rastra-criolla.jpg" alt="Rastra criolla de cuero con monedas de alpaca" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Rastra criolla</h4>
+              <p class="pieza__desc">Cuero doble con monedas de alpaca cosidas una por una a tiento.</p>
+              <a class="info" href="articulos/rastra-criolla.pdf" target="_blank" rel="noopener" aria-label="Más información sobre la rastra criolla (PDF)">+ Info</a>
+            </div>
+          </article>
+
+          <article class="pieza">
+            <img class="pieza__foto" src="articulos/cartera-cuero.jpg" alt="Cartera de cuero crudo con banda de telar" loading="lazy">
+            <div class="pieza__cuerpo">
+              <h4 class="pieza__nombre">Cartera de cuero y telar</h4>
+              <p class="pieza__desc">Cuerpo de cuero crudo con una banda tejida en el mismo taller.</p>
+              <a class="info" href="articulos/cartera-cuero.pdf" target="_blank" rel="noopener" aria-label="Más información sobre la cartera de cuero y telar (PDF)">+ Info</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- ===== INFORMACIÓN ===== -->
+  <section class="bloque" id="informacion">
+    <h2 class="titulo-seccion">Información</h2>
+    <div class="columnas">
+      <div>
+        <h3 class="sub">Cómo trabajamos</h3>
+        <p>Somos cuatro personas. Cada una maneja un oficio y firma lo que hace, así que el tiempo de una pieza depende de quién la esté haciendo: una ruana lleva dos semanas de telar, un bowl entra en la hornada del mes.</p>
+        <p>Si querés una medida, un color o una combinación distinta, se puede. Escribinos antes de comprar y lo charlamos.</p>
+      </div>
+      <div>
+        <h3 class="sub">Envíos y entregas</h3>
+        <p>Enviamos a todo el país por correo, con seguimiento. A La Plata y alrededores llevamos nosotros los martes y los viernes.</p>
+        <p>También podés retirar por el taller con turno previo, y de paso ver los telares trabajando.</p>
+      </div>
+      <div>
+        <h3 class="sub">Cuidado de las piezas</h3>
+        <p>La lana se lava a mano en agua fría y se seca en plano. La madera se repasa con aceite de lino dos veces al año. La cerámica va al horno y al lavavajillas sin problema.</p>
+        <p>Cada pieza viene con su ficha en PDF, la misma que abrís desde el botón «+ Info».</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="bloque bloque--contacto" id="contacto">
+    <h2 class="titulo-seccion">Contacto</h2>
+    <p class="intro">Escribinos y te respondemos dentro de las 48 horas.</p>
+    <dl class="datos">
+      <dt>Correo</dt>
+      <dd><a href="mailto:hola@tallerlatala.com.ar">hola@tallerlatala.com.ar</a></dd>
+
+      <dt>WhatsApp</dt>
+      <dd><a href="https://wa.me/5492211234567" target="_blank" rel="noopener">221 123-4567</a></dd>
+
+      <dt>Taller</dt>
+      <dd>Calle 32 n.º 1480, La Plata<br>Visitas con turno, de martes a sábado</dd>
+
+      <dt>Ferias</dt>
+      <dd>Todos los domingos en Plaza Islas Malvinas, de 10 a 18</dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <p>Taller La Tala — artesanías hechas de a una.</p>
+  <p>Las fotos y las fichas de cada pieza están en la carpeta «articulos».</p>
+</footer>
+
+</body>
+</html>

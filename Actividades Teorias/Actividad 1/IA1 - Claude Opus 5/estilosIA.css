@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500;700&family=Karla:wght@400;600&display=swap');
+
+/* ============================================================
+   Taller La Tala — hoja de estilos
+   Sin JavaScript: el filtro por categoría funciona con
+   radio buttons ocultos + el selector hermano (~).
+   ============================================================ */
+
+:root{
+  --lino:      #f5e9d7;   /* fondo general */
+  --lino-hondo:#ecdcc2;   /* fondos secundarios */
+  --greda:     #d9c1a0;   /* bordes y placeholders */
+  --tinta:     #2e211a;   /* texto */
+  --tinta-suave:#6a564a;  /* texto secundario */
+  --cochinilla:#a33b2a;   /* acento principal */
+  --yerba:     #55663c;   /* acento secundario */
+  --ocre:      #c98a2b;
+
+  --titulo: 'Bitter', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --texto:  'Karla', 'Trebuchet MS', 'Segoe UI', system-ui, sans-serif;
+
+  --ancho: 1080px;
+  --borde: 1.5px solid var(--tinta);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--lino);
+  color:var(--tinta);
+  font-family:var(--texto);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-text-size-adjust:100%;
+}
+
+img{ max-width:100%; display:block; }
+
+a{ color:var(--cochinilla); }
+
+h1,h2,h3,h4{ font-family:var(--titulo); line-height:1.15; margin:0; }
+
+p{ margin:0 0 .9em; max-width:62ch; }
+
+:focus-visible{
+  outline:3px solid var(--ocre);
+  outline-offset:3px;
+}
+
+/* ---------- Cabecera y menú ---------- */
+
+.cabecera{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:.6rem 1.5rem;
+  padding:.9rem clamp(1rem, 4vw, 3rem);
+  background:var(--lino);
+  border-bottom:var(--borde);
+}
+
+.marca{
+  text-decoration:none;
+  color:inherit;
+  display:flex;
+  flex-direction:column;
+}
+
+.marca__nombre{
+  font-family:var(--titulo);
+  font-weight:700;
+  font-size:1.35rem;
+  letter-spacing:.01em;
+}
+
+.marca__oficio{
+  font-size:.78rem;
+  color:var(--tinta-suave);
+  letter-spacing:.06em;
+}
+
+.menu{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.3rem;
+}
+
+.menu a{
+  color:var(--tinta);
+  text-decoration:none;
+  padding:.4rem .8rem;
+  border:1.5px solid transparent;
+  border-radius:2px;
+}
+
+.menu a:hover,
+.menu a:focus-visible{
+  border-color:var(--tinta);
+  background:var(--lino-hondo);
+}
+
+/* ---------- Portada ---------- */
+
+.portada{
+  max-width:var(--ancho);
+  margin:0 auto;
+  padding:clamp(3rem, 9vw, 6rem) clamp(1rem, 4vw, 3rem) clamp(2rem, 5vw, 3.5rem);
+}
+
+.portada__linea{
+  font-size:.9rem;
+  color:var(--tinta-suave);
+  margin-bottom:1.4rem;
+  padding-left:1.9rem;
+  position:relative;
+}
+
+.portada__linea::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.65em;
+  width:1.3rem;
+  height:2px;
+  background:var(--cochinilla);
+}
+
+.portada__titulo{
+  font-size:clamp(2.4rem, 7.5vw, 4.6rem);
+  font-weight:700;
+  margin-bottom:1.3rem;
+}
+
+.portada__bajada{
+  font-size:1.08rem;
+  color:var(--tinta-suave);
+  max-width:46ch;
+}
+
+.portada__paso{
+  display:inline-block;
+  margin-top:1rem;
+  padding:.65rem 1.6rem;
+  background:var(--cochinilla);
+  color:var(--lino);
+  text-decoration:none;
+  font-weight:600;
+  border-radius:2px;
+}
+
+.portada__paso:hover,
+.portada__paso:focus-visible{ background:var(--tinta); }
+
+/* Banda de urdimbre: hilos de telar dibujados con gradientes */
+.urdimbre{
+  height:16px;
+  border-top:var(--borde);
+  border-bottom:var(--borde);
+  background:repeating-linear-gradient(
+    90deg,
+    var(--cochinilla) 0 7px,
+    var(--lino-hondo) 7px 14px,
+    var(--yerba)      14px 21px,
+    var(--lino-hondo) 21px 28px,
+    var(--ocre)       28px 35px,
+    var(--lino-hondo) 35px 42px
+  );
+}
+
+/* ---------- Estructura de secciones ---------- */
+
+.catalogo,
+.bloque{
+  max-width:var(--ancho);
+  margin:0 auto;
+  padding:clamp(2.8rem, 7vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+}
+
+.titulo-seccion{
+  font-size:clamp(1.7rem, 4vw, 2.3rem);
+  margin-bottom:.5rem;
+}
+
+.intro{
+  color:var(--tinta-suave);
+  margin-bottom:2rem;
+}
+
+/* ---------- Filtro por categoría (sin JS) ---------- */
+
+.radio{
+  position:absolute;
+  width:1px; height:1px;
+  margin:-1px;
+  padding:0;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+
+.filtros{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  padding-bottom:1.8rem;
+  margin-bottom:2.2rem;
+  border-bottom:1px dashed var(--greda);
+}
+
+.filtros label{
+  cursor:pointer;
+  padding:.45rem 1.1rem;
+  border:var(--borde);
+  border-radius:2px;
+  background:transparent;
+  font-size:.95rem;
+  user-select:none;
+}
+
+.filtros label:hover{ background:var(--lino-hondo); }
+
+/* Categoría elegida */
+#cat-todas:checked   ~ .filtros label[for="cat-todas"],
+#cat-tejidos:checked ~ .filtros label[for="cat-tejidos"],
+#cat-ceramica:checked~ .filtros label[for="cat-ceramica"],
+#cat-madera:checked  ~ .filtros label[for="cat-madera"],
+#cat-cuero:checked   ~ .filtros label[for="cat-cuero"]{
+  background:var(--tinta);
+  color:var(--lino);
+}
+
+/* Foco de teclado sobre el radio oculto → se marca la etiqueta */
+#cat-todas:focus-visible   ~ .filtros label[for="cat-todas"],
+#cat-tejidos:focus-visible ~ .filtros label[for="cat-tejidos"],
+#cat-ceramica:focus-visible~ .filtros label[for="cat-ceramica"],
+#cat-madera:focus-visible  ~ .filtros label[for="cat-madera"],
+#cat-cuero:focus-visible   ~ .filtros label[for="cat-cuero"]{
+  outline:3px solid var(--ocre);
+  outline-offset:3px;
+}
+
+/* Se muestra solo el grupo elegido */
+#cat-tejidos:checked  ~ .grupos .grupo:not(.grupo--tejidos),
+#cat-ceramica:checked ~ .grupos .grupo:not(.grupo--ceramica),
+#cat-madera:checked   ~ .grupos .grupo:not(.grupo--madera),
+#cat-cuero:checked    ~ .grupos .grupo:not(.grupo--cuero){
+  display:none;
+}
+
+/* ---------- Grupos y grilla ---------- */
+
+.grupo + .grupo{ margin-top:3.5rem; }
+
+.grupo__titulo{
+  font-size:1.45rem;
+  padding-bottom:.35rem;
+  border-bottom:2px solid var(--cochinilla);
+  display:inline-block;
+}
+
+.grupo__nota{
+  color:var(--tinta-suave);
+  font-size:.95rem;
+  margin:.7rem 0 1.6rem;
+}
+
+.grilla{
+  display:grid;
+  gap:1.6rem;
+  grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+}
+
+/* ---------- Tarjeta de pieza ---------- */
+
+.pieza{
+  display:flex;
+  flex-direction:column;
+  border:var(--borde);
+  border-radius:3px;
+  background:var(--lino-hondo);
+  overflow:hidden;
+}
+
+.pieza__foto{
+  width:100%;
+  aspect-ratio:4 / 3;
+  object-fit:cover;
+  background:var(--greda);
+  border-bottom:var(--borde);
+}
+
+.pieza__cuerpo{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  padding:1.1rem 1.2rem 1.3rem;
+}
+
+.pieza__nombre{
+  font-size:1.12rem;
+  margin-bottom:.5rem;
+}
+
+.pieza__desc{
+  font-size:.94rem;
+  color:var(--tinta-suave);
+  margin-bottom:1.2rem;
+}
+
+.info{
+  align-self:flex-start;
+  margin-top:auto;
+  padding:.4rem 1rem;
+  border:1.5px solid var(--cochinilla);
+  border-radius:2px;
+  color:var(--cochinilla);
+  text-decoration:none;
+  font-size:.92rem;
+  font-weight:600;
+}
+
+.info:hover,
+.info:focus-visible{
+  background:var(--cochinilla);
+  color:var(--lino);
+}
+
+/* ---------- Información ---------- */
+
+.columnas{
+  display:grid;
+  gap:2rem;
+  grid-template-columns:repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.sub{
+  font-size:1.15rem;
+  margin-bottom:.7rem;
+  padding-left:.9rem;
+  border-left:3px solid var(--yerba);
+}
+
+.columnas p{ font-size:.96rem; }
+
+/* ---------- Contacto ---------- */
+
+.bloque--contacto{
+  background:var(--lino-hondo);
+  max-width:none;
+  border-top:var(--borde);
+  border-bottom:var(--borde);
+}
+
+.bloque--contacto > *{
+  max-width:var(--ancho);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.datos{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:.9rem 2rem;
+  margin:0;
+  align-items:baseline;
+}
+
+.datos dt{
+  font-family:var(--titulo);
+  font-weight:500;
+  color:var(--tinta-suave);
+}
+
+.datos dd{ margin:0; }
+
+/* ---------- Pie ---------- */
+
+.pie{
+  padding:2.5rem clamp(1rem, 4vw, 3rem);
+  font-size:.88rem;
+  color:var(--tinta-suave);
+}
+
+.pie p{ margin:.2rem 0; }
+
+/* ---------- Pantallas chicas ---------- */
+
+@media (max-width: 760px){
+  body{ font-size:16px; }
+
+  .cabecera{ justify-content:center; text-align:center; }
+  .marca{ align-items:center; }
+  .menu{ justify-content:center; width:100%; }
+
+  .filtros{ gap:.4rem; }
+  .filtros label{ padding:.4rem .85rem; font-size:.9rem; }
+
+  .grilla{ grid-template-columns:1fr; }
+  .pieza__foto{ aspect-ratio:16 / 9; }
+
+  .datos{ grid-template-columns:1fr; gap:.2rem 0; }
+  .datos dd{ margin-bottom:1rem; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}

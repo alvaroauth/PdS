@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artesanías - Emprendimiento</title>
+    <link rel="stylesheet" href="estilosIA.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#informacion">Información</a></li>
+                <li><a href="#articulos">Artículos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="articulos">
+        <h1>Nuestras Artesanías</h1>
+
+        <input type="radio" id="todos" name="filtro" checked>
+        <label for="todos" class="btn-filtro">Todos</label>
+
+        <input type="radio" id="tejidos" name="filtro">
+        <label for="tejidos" class="btn-filtro">Tejidos</label>
+
+        <input type="radio" id="ceramica" name="filtro">
+        <label for="ceramica" class="btn-filtro">Cerámica</label>
+
+        <div class="galeria">
+            <div class="tarjeta item-tejido">
+                <img src="articulos/bufanda.jpg" alt="Bufanda de Lana">
+                <h2>Bufanda de Lana</h2>
+                <p>Bufanda tejida a mano con pura lana de oveja, ideal para el invierno.</p>
+                <a href="articulos/bufanda.pdf" target="_blank" class="btn-info">+ Info</a>
+            </div>
+            <div class="tarjeta item-tejido">
+                <img src="articulos/poncho.jpg" alt="Poncho Norteño">
+                <h2>Poncho Norteño</h2>
+                <p>Clásico poncho con guarda pampa, diseño tradicional y abrigado.</p>
+                <a href="articulos/poncho.pdf" target="_blank" class="btn-info">+ Info</a>
+            </div>
+            <div class="tarjeta item-tejido">
+                <img src="articulos/manta.jpg" alt="Manta Rústica">
+                <h2>Manta Rústica</h2>
+                <p>Manta gruesa de hilo de algodón peinado para el sillón o la cama.</p>
+                <a href="articulos/manta.pdf" target="_blank" class="btn-info">+ Info</a>
+            </div>
+
+            <div class="tarjeta item-ceramica">
+                <img src="articulos/mate.jpg" alt="Mate de Cerámica">
+                <h2>Mate de Cerámica</h2>
+                <p>Mate esmaltado a mano. Conserva la temperatura espectacular.</p>
+                <a href="articulos/mate.pdf" target="_blank" class="btn-info">+ Info</a>
+            </div>
+            <div class="tarjeta item-ceramica">
+                <img src="articulos/cuenco.jpg" alt="Cuenco Pintado">
+                <h2>Cuenco Pintado</h2>
+                <p>Cuenco ideal para picadas o como decoración en la mesa.</p>
+                <a href="articulos/cuenco.pdf" target="_blank" class="btn-info">+ Info</a>
+            </div>
+            <div class="tarjeta item-ceramica">
+                <img src="articulos/jarron.jpg" alt="Jarrón de Arcilla">
+                <h2>Jarrón de Arcilla</h2>
+                <p>Jarrón rústico moldeado a mano para flores secas o frescas.</p>
+                <a href="articulos/jarron.pdf" target="_blank" class="btn-info">+ Info</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
