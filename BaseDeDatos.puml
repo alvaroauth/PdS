@@ -1,0 +1,96 @@
+@startchen
+
+entity Trabajador {
+    email <<key>>
+    nombre
+    apellido
+    DNI
+    contraseña
+    activo
+    fecha_Creacion
+    fecha_Modificacion
+}
+entity Rol {
+    nombre <<key>>
+}
+entity Permiso {
+    nombre <<key>>
+}
+entity Sector {
+    nombre
+}
+entity Personal {
+}
+entity TipoPersonal {
+}
+entity TipoMenu {
+}
+entity Cupo {
+}
+entity Pedido {
+}
+entity Solicitud {
+}
+
+relationship trabaja {
+}
+relationship tiene {
+}
+relationship posee {
+}
+relationship asociado {
+}
+relationship clasifica {
+}
+relationship corresponde {
+}
+relationship define {
+}
+relationship carga {
+}
+relationship recibe {
+}
+relationship compone {
+}
+relationship solicita {
+}
+relationship registra {
+}
+
+Sector -1- trabaja
+trabaja -N- Trabajador
+
+Rol -1- tiene
+tiene -N- Trabajador
+
+Rol -N- posee
+posee -N- Permiso
+
+Sector -1- asociado
+asociado -N- Personal
+
+TipoPersonal -1- clasifica
+clasifica -N- Personal
+
+TipoMenu -1- corresponde
+corresponde -N- Personal
+
+Sector -1- define
+define -N- Cupo
+
+Sector -1- recibe
+recibe -N- Pedido
+
+Trabajador -1- carga
+carga -N- Pedido
+
+Pedido -1- compone
+compone -N- Solicitud
+
+Personal -1- solicita
+solicita -N- Solicitud
+
+TipoMenu -1- registra
+registra -N- Solicitud
+
+@endchen
