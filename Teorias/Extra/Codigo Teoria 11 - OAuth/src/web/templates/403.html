@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block title %}Sin permiso{% endblock %}
+{% block content %}
+<h1>403 — Sin permiso</h1>
+<p>El proveedor te autenticó, pero <strong>nuestra app</strong> decide quién aprueba solicitudes.</p>
+<p><a href="{{ url_for('solicitudes.index') }}">Volver a las solicitudes</a></p>
+{% endblock %}

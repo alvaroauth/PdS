@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Perfil e ID token{% endblock %}
+{% block content %}
+<h1>Lo que recibió la app del proveedor</h1>
+
+<h2>Identidad para vincular con un usuario local</h2>
+<p>Clave <code>iss|sub</code> (copiala en <code>JEFES_DE_SERVICIO</code> del <code>.env</code> para poder aprobar):</p>
+<pre>{{ id_token.claims.iss }}|{{ id_token.claims.sub }}</pre>
+
+<h2>Scopes otorgados</h2>
+<pre>{{ id_token.scope_otorgado }}</pre>
+
+<h2>ID token (JWT): header</h2>
+<pre>{{ id_token.header | tojson(indent=2) }}</pre>
+
+<h2>ID token (JWT): payload / claims</h2>
+<pre>{{ id_token.claims | tojson(indent=2) }}</pre>
+<p>Authlib ya verificó firma, <code>iss</code>, <code>aud</code> (nuestro client_id), <code>exp</code> y <code>nonce</code>.
+Decodificar estas partes no es verificar: cualquiera puede leerlas.</p>
+{% endblock %}

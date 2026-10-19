@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% block head %}
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+      <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+  </head>
+  <body>
+    <!-- Skip link para accesibilidad -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
+    <!-- Header con navegación -->
+    <header id="navbar" role="banner">
+      {% block header %}
+      <div class="nav-container">
+          <a href="/" class="logo" aria-label="Inicio - Aplicación Web">
+              📱 Mi App
+          </a>
+          <div class="user-info">
+                {% if is_authenticated(session) %}
+                  Logeado como <strong>{{ session['user'] }}</strong>
+                {% endif %}
+          </div>
+          <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+          <script>
+            const toggle = document.getElementById('theme-toggle');
+            const root = document.documentElement;
+
+            // 🌙 Oscuro por defecto, salvo que haya preferencia guardada
+            if (localStorage.getItem('theme') === 'light') {
+              root.setAttribute('data-theme', 'light');
+              toggle.textContent = '☀️';
+            } else {
+              root.removeAttribute('data-theme'); // oscuro por defecto
+              toggle.textContent = '🌙';
+            }
+
+            toggle.addEventListener('click', () => {
+              if (root.getAttribute('data-theme') === 'light') {
+                // Cambiar a oscuro
+                root.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+                toggle.textContent = '🌙';
+              } else {
+                // Cambiar a claro
+                root.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                toggle.textContent = '☀️';
+              }
+            });
+          </script>
+      </div>
+      {% endblock %}
+    </header>
+
+    <!-- Contenido principal -->
+    <main id="content" id="main-content" role="main">
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      {% block navbar %}
+      {% endblock %}
+    
+
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <footer id="footer" role="contentinfo">
+        <div class="footer-content">
+          {% block footer %}
+          {% endblock %}
+        </div>
+    </footer>
+  </body>
+</html>

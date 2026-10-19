@@ -1,0 +1,22 @@
+[project]
+name = "clase-oauth-2026"
+version = "0.1.0"
+description = "Inicio de sesión con OpenID Connect en Flask usando Authlib"
+requires-python = ">=3.12,<4"
+dependencies = [
+  "flask>=3.1,<4",
+  "authlib>=1.3,<2",
+  "requests>=2.32,<3",
+  "python-dotenv>=1,<2",
+  "flask-session>=0.8,<1",
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8,<10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

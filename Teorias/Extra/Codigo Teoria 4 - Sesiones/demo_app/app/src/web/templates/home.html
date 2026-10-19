@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% block title %}Inicio - Aplicación Proyecto{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+    {% block navbar %}
+        {% if  visitas %}
+        <p class="visit-count">
+            Visitas: <strong>{{ visitas }}</strong>
+        </p>
+        {% endif %}
+
+        <h1 class="page-title">Inicio</h1>
+        <p class="page-description">
+            Bienvenido a la página de inicio de la aplicación.
+        </p>
+
+        <!-- Navegación principal - Inicio de Sesión -->
+        <nav class="main-nav" aria-label="Navegación principal">
+            <div class="nav-grid">
+                {% if is_authenticated(session) %}
+                  <a href="{{ url_for('auth.logout') }}" class="nav-link" aria-describedby="auth-desc">
+                      Cerrar sesión
+                  </a>
+                {% else %}
+                  <a href="{{ url_for('auth.login') }}" class="nav-link" aria-describedby="auth-desc">
+                      🔐 Iniciar sesión
+                  </a>
+                  {% if vulnerabilidades %}
+                    <a href="{{ url_for('auth_login_sqli') }}" class="nav-link" aria-describedby="sqli-desc">
+                        ⚠️ Iniciar sesión SQLi
+                    </a>
+                  {% endif %}
+               {% endif %}
+            </div>
+        </nav>
+    {% endblock %}
+
+    {% block content %}
+        <!-- Sección de Consultas -->
+        <section class="examples-section" aria-labelledby="consultas-title">
+            <h2 id="consultas-title" class="section-title">Consultas</h2>
+            <p class="page-description">
+                Herramientas de consulta y búsqueda de información.
+            </p>
+            <div class="nav-grid">
+                <a href="{{ url_for('issues.index') }}" class="nav-link">
+                    🔍 Sistema de Consultas
+                </a>
+                {% if is_authenticated(session) %}
+                  <a href="{{ url_for('users.index') }}" class="nav-link" aria-describedby="auth-desc">
+                      Usuarios (Necesita autenticación)
+                  </a>
+                {% endif %}
+            </div>
+        </section>
+        {% if vulnerabilidades %}
+            <!-- Sección de Seguridad -->
+            <section class="examples-section" aria-labelledby="security-title">
+                <h2 id="security-title" class="section-title">Ejemplos de Seguridad</h2>
+                <p class="page-description">
+                    Demostraciones de vulnerabilidades y técnicas de seguridad web.
+                </p>
+                <div class="nav-grid">
+                    <a href="{{ url_for('musician_xss') }}" class="nav-link">
+                        🛡️ Ejemplo XSS
+                    </a>
+                </div>
+            </section>
+        {% endif %}
+        
+        {% if ajax %}
+            <!-- Sección de ejemplos AJAX -->
+            <section class="examples-section" aria-labelledby="ajax-title">
+                <h2 id="ajax-title" class="section-title">Ejemplos AJAX</h2>
+                <p class="page-description">
+                    Diferentes implementaciones de AJAX para comunicación asíncrona con el servidor.
+                </p>
+                <ul class="examples-list">
+                    <li class="example-item">
+                        <a href="{{ url_for('ejemplo_ajax') }}" class="nav-link">
+                            📡 Ejemplo AJAX - XHR
+                        </a>
+                    </li>
+                    <li class="example-item">
+                        <a href="{{ url_for('ejemplo_ajax_jquery') }}" class="nav-link">
+                            💎 Ejemplo AJAX - jQuery
+                        </a>
+                    </li>
+                    <li class="example-item">
+                        <a href="{{ url_for('ejemplo_ajax_fetch') }}" class="nav-link">
+                            🚀 Ejemplo AJAX - Fetch API
+                        </a>
+                    </li>
+                    <li class="example-item">
+                        <a href="{{ url_for('ejemplo_ajax_async_await') }}"  class="nav-link">
+                            ⚡ Ejemplo AJAX - Async/Await
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        {% endif %}
+{% endblock %}
+
+{% block footer %}
+  <p>Mi Aplicación Web - Proyecto Open Source</p>
+{% endblock %}

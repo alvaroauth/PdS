@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<title>AJAX Fetch</title>
+    <link href="{{ url_for('static', filename='estilos.css') }}" rel="stylesheet" type="text/css">
+<script>
+  function checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return Promise.resolve(response)
+    } else {
+      return Promise.reject(new Error(response.statusText))
+    }
+  }
+
+  function parseJson(response) {
+    return response.json()
+  }
+
+  function buscarFetch(){
+    fetch('http://localhost:5000/all_musicos')
+      .then(checkStatus)
+      .then(parseJson)
+      .then(function(data) {
+        console.log('Request succeeded with JSON response', data);
+        document.getElementById('info').textContent = JSON.stringify(data.musician);
+      }).catch(function(error) {
+        console.log('Request failed', error);
+        document.getElementById('error').textContent = error; 
+      });
+  }
+
+    function buscarFetchError(){
+    fetch('http://localhost:5000/url_mal')
+      .then(checkStatus)
+      .then(parseJson)
+      .then(function(data) {
+        console.log('Request succeeded with JSON response', data);
+        document.getElementById('info').textContent = JSON.stringify(data.musician);
+      }).catch(function(error) {
+        console.log('Request failed', error);
+        document.getElementById('info').textContent = '';
+        document.getElementById('error').textContent = error; 
+      });
+  }
+
+</script>
+</head>
+
+<body>
+    <h1>Proyecto de Software</h1>
+  	<img src="{{ url_for('static', filename='images/logoUNLP.png') }}" alt="Logo de la UNLP">
+    <h2>AJAX Async Await</h2>
+    <ul>
+      <li>
+        <label for ="interprete"> Intérprete: </label>
+        <input type="button" size="1" name="btn_async"  onclick="buscarFetch()" value="Buscar Todos" />
+       <input type="button" size="1" name="btn_async"  onclick="buscarFetchError()" value="Buscar con Error" />
+      </li>
+      <li>
+        <label for="info">  Informaci&oacute;n:</label>
+        <h3 id="info"></h3>
+      </li>
+    </ul>
+    <h3 class="error" id="error"></h3>
+    <p><a href= "/"> Volver </a></p>
+
+</body>
+</html>

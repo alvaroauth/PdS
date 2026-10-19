@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Solicitudes{% endblock %}
+{% block content %}
+<h1>Solicitudes</h1>
+{% if puede_aprobar %}
+<p>Tu cuenta figura como <strong>jefe de servicio</strong>: podés aprobar.</p>
+{% else %}
+<p>Estás autenticado, pero tu cuenta <strong>no tiene permiso local</strong> para aprobar.
+Igual podés intentarlo: la app responde 403.</p>
+{% endif %}
+<table>
+  <caption>Solicitudes de demostración (en memoria)</caption>
+  <thead><tr><th scope="col">ID</th><th scope="col">Servicio</th><th scope="col">Fecha</th><th scope="col">Cantidad</th><th scope="col">Estado</th><th scope="col">Acción</th></tr></thead>
+  <tbody>
+  {% for s in solicitudes %}
+    <tr>
+      <td>{{ s.id }}</td><td>{{ s.servicio }}</td><td>{{ s.fecha }}</td><td>{{ s.cantidad }}</td><td>{{ s.estado }}</td>
+      <td>{% if s.estado == "pendiente" %}
+        <form method="post" action="{{ url_for('solicitudes.aprobar', solicitud_id=s.id) }}">
+          <button type="submit">Aprobar</button>
+        </form>{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

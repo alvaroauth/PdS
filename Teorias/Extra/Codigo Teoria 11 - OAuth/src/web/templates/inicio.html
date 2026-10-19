@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Solicitudes de comidas</h1>
+{% if session.usuario %}
+<p>Sesión iniciada como <strong>{{ session.usuario.nombre or session.usuario.sub }}</strong>.</p>
+<p><a href="{{ url_for('solicitudes.index') }}">Ir a las solicitudes</a></p>
+{% else %}
+<p>Para ver las solicitudes hay que ingresar. La app <strong>no pide contraseña</strong>:
+te redirige al proveedor de identidad, que te autentica y te pregunta si compartís tus datos.</p>
+<p><a class="boton" href="{{ url_for('auth.login') }}">Ingresar con Google</a></p>
+{% endif %}
+{% endblock %}

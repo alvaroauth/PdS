@@ -1,0 +1,19 @@
+body { font-family: system-ui, sans-serif; max-width: 1000px; margin: 0 auto; padding: 24px; color: #172554; line-height: 1.6; }
+header, footer { padding: 16px 0; border-bottom: 1px solid #cbd5e1; }
+footer { margin-top: 32px; font-size: .9rem; }
+nav { display: flex; gap: 20px; flex-wrap: wrap; margin: 16px 0; }
+a { color: #1d4ed8; }
+a:focus-visible, input:focus-visible, button:focus-visible { outline: 3px solid #b45309; outline-offset: 3px; }
+table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+caption { text-align: left; padding: 8px 0; }
+th, td { padding: 12px; border: 1px solid #cbd5e1; text-align: left; }
+th { background: #eff6ff; }
+code { background: #f1f5f9; padding: 2px 4px; }
+input, button { font: inherit; padding: 6px; }
+input { width: 90px; }
+dt { font-weight: bold; }
+.flash { padding: 12px; border: 1px solid #b45309; background: #fffbeb; }
+.boton { display: inline-block; padding: 8px 16px; background: #1d4ed8; color: #fff; text-decoration: none; border: 0; border-radius: 4px; cursor: pointer; }
+nav form { display: inline; margin: 0; }
+nav form button { background: none; border: 0; color: #1d4ed8; text-decoration: underline; cursor: pointer; padding: 0; }
+pre { background: #f1f5f9; padding: 12px; overflow-x: auto; }

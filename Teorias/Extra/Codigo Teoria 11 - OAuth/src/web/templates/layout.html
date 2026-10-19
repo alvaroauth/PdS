@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Solicitudes{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+  <header>
+    <p>Proyecto de Software · Ingreso con OpenID Connect</p>
+    <nav aria-label="Principal">
+      <a href="{{ url_for('inicio') }}">Inicio</a>
+      <a href="{{ url_for('solicitudes.index') }}">Solicitudes</a>
+      {% if session.usuario %}
+      <a href="{{ url_for('auth.perfil') }}">Perfil e ID token</a>
+      <a href="{{ url_for('agenda.index') }}">Agenda (access token)</a>
+      <span>{{ session.usuario.nombre or session.usuario.sub }}</span>
+      <form method="post" action="{{ url_for('auth.logout') }}">
+        <button type="submit">Cerrar sesión</button>
+      </form>
+      {% else %}
+      <a href="{{ url_for('auth.login') }}">Ingresar</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>
+    {% for mensaje in get_flashed_messages() %}<p class="flash" role="status">{{ mensaje }}</p>{% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer>Demo local con datos ficticios. No apta para producción.</footer>
+</body>
+</html>

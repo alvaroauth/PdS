@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Ingreso rechazado{% endblock %}
+{% block content %}
+<h1>No se pudo completar el ingreso</h1>
+<p><code>{{ error.error }}</code>{% if error.description %}: {{ error.description }}{% endif %}</p>
+<p>La respuesta que llegó al callback no es válida: por ejemplo, el <code>state</code> no corresponde
+a un intento iniciado en este navegador, el código no se pudo canjear o el ID token no pasó la validación.</p>
+<p><a href="{{ url_for('inicio') }}">Volver al inicio</a></p>
+{% endblock %}

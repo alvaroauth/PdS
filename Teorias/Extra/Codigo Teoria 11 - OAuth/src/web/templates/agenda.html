@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Agenda{% endblock %}
+{% block content %}
+<h1>Próximos eventos de tu calendario</h1>
+{% if not otorgado %}
+<p>No otorgaste el permiso de lectura del calendario en la pantalla de consentimiento.
+La app respeta esa decisión: no puede leerlo. Para cambiarlo, cerrá sesión e ingresá de nuevo.</p>
+{% else %}
+<p>Petición que hizo el servidor de la app a la API de Google Calendar:</p>
+<pre>GET {{ url }}
+Authorization: Bearer {{ bearer }}</pre>
+<p>Respuesta: <strong>{{ status }}</strong></p>
+{% if error %}
+<p class="flash">{{ error }}</p>
+{% elif eventos %}
+<ul>
+  {% for e in eventos %}
+  <li>{{ e.start.dateTime or e.start.date }} — {{ e.summary or "(sin título)" }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No hay eventos próximos.</p>
+{% endif %}
+{% endif %}
+<p>Éste es un access token para la API de <strong>Google</strong>. Nuestra app no lo acepta
+como credencial propia ni lo usa para decidir quién aprueba solicitudes.</p>
+{% endblock %}
